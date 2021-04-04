@@ -53,6 +53,7 @@ int main () {
     int type;
     double op2;
     char s[MAXOP];
+    int t, g;
 
     while (getl(line, MAXLINE) != 0) {
         line_i = 0;
@@ -73,6 +74,23 @@ int main () {
                 op2 = pop();
                 push (pop() + op2);
                 break;
+            case '%' :
+                op2 = pop();
+                if (op2 != 0.0) {
+                    t = (pop() / op2);
+                    trunc (t);
+                    push (t);
+
+                } else {
+                    printf("error: zero divisor\n");
+                    return -1;
+                }
+                break;
+            case '^' :
+                op2 = pop ();
+                t = pow (op2, pop ());
+                push (t);
+                break;    
             case '/' :
                 op2 = pop();
                 if (op2 != 0.0) {
