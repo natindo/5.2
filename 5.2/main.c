@@ -100,9 +100,15 @@ int main () {
                     return -1;
                 }
                 break;
+
+            case 'sin' :
+                break;
+            case 'cos' :
+                break;    
             case '\n': 
                 printf("\t%.8g\n", pop());
-                break;     
+                break;
+                     
             default:
                 printf("error: unknown command %s\n", s);
                 return -2;
