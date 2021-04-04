@@ -1,25 +1,28 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 
-#define STACK_SIZE 100
+#define MAXVAL 100 
 
-static double stack[STACK_SIZE];
-static int top = -1;
+int sp = 0;
+double val[MAXVAL];
+void push (double);
+double pop (void); 
 
-void push(double n){
-    if (top +1 < STACK_SIZE) {
-        stack[++top] = n;
-    } else {
-        printf("error: stack is full\n");
-        exit(111);
-    }
+void push(double f)
+{
+    if (sp < MAXVAL)
+        val[sp++] = f;
+    else
+        printf("error,\n");
 }
 
-double pop() {
-    if (top != -1) {
-        return stack[top--];
-    } else {
-        printf("error: stack is empty\n");
-        exit(222);
+double pop(void)
+{
+    if (sp > 0)
+        return val[--sp];
+    else {
+        printf ("321‚\n");
+    return 0.0;
     }
 }
