@@ -51,7 +51,7 @@ int getl(char s[], int lim)
 
 int main () {
     int type;
-    double op2;
+    double op2, op3;
     char s[MAXOP];
     int t, g;
 
@@ -88,8 +88,8 @@ int main () {
                 break;
             case '^' :
                 op2 = pop ();
-                t = pow (op2, pop ());
-                push (t);
+                op3 = pop ();
+                push (pow(op3, op2));
                 break;    
             case '/' :
                 op2 = pop();
@@ -101,14 +101,20 @@ int main () {
                 }
                 break;
 
-            case 'sin' :
+            case 's' :
+                op2 = pop ();
+                op3 = sin (op2);
+                push (op3);
                 break;
-            case 'cos' :
+            case 'c' :
+                op2 = pop ();
+                op3 = cos (op2);
+                push (op3);
                 break;    
             case '\n': 
                 printf("\t%.8g\n", pop());
                 break;
-                     
+
             default:
                 printf("error: unknown command %s\n", s);
                 return -2;
