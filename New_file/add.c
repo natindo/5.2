@@ -37,4 +37,5 @@ void compare(double result) {
     if (pow(result,2) > pow((int)result, 2))
         printf("%.3f", result);
     else printf("%d", (int)result);
+    printf("%s", "GOPA!!!");
 }
