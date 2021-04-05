@@ -58,6 +58,13 @@ void quick_sort_rec (int v[], int left, int right) {
 }
 */
 
+void quick_sort (int v[], int left, int right) {
+    int i, mid;
+    if (left >= right) 
+        return;
+    
+}
+
 int main() {
 
     return 0;
