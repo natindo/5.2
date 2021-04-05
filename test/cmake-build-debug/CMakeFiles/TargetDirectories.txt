@@ -1,0 +1,3 @@
+C:/Users/anker/Desktop/clion/test/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/anker/Desktop/clion/test/cmake-build-debug/CMakeFiles/test.dir
+C:/Users/anker/Desktop/clion/test/cmake-build-debug/CMakeFiles/edit_cache.dir
