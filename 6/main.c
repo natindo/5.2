@@ -1,12 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define swap(x,y) do \
-   { unsigned char swap_temp[sizeof(x) == sizeof(y) ? (signed)sizeof(x) : -1]; \
-     memcpy(swap_temp,&y,sizeof(x)); \
-     memcpy(&y,&x,       sizeof(x)); \
-     memcpy(&x,swap_temp,sizeof(x)); \
-    } while(0)
 
  #define swap(t,x,y) {t temp = x; x = y; y = temp;}
 
@@ -75,57 +69,45 @@ void quick_sort_rec (int v[], int left, int right) {
 }
 */
 
-#define MAX_LEVELS  1000
+void quickSort(int *arr, int elements) {
 
-#define MAX_LEVELS  48
+  #define  MAX_LEVELS  300
 
-int quickSort(int *arr, size_t elements) {
-    size_t beg[MAX_LEVELS], end[MAX_LEVELS], L, R;
-    int i = 0;
+  int  piv, beg[MAX_LEVELS], end[MAX_LEVELS], i=0, L, R, swap ;
 
-    beg[0] = 0;
-    end[0] = elements;
-    while (i >= 0) {
-        L = beg[i];
-        R = end[i];
-        if (R - L > 1) {
-            size_t M = L + ((R - L) >> 1);
-            int piv = arr[M];
-            arr[M] = arr[L];
-
-            if (i == MAX_LEVELS - 1)
-                return -1;
-            R--;
-            while (L < R) {
-                while (arr[R] >= piv && L < R)
-                    R--;
-                if (L < R)
-                    arr[L++] = arr[R];
-                while (arr[L] <= piv && L < R)
-                    L++;
-                if (L < R)
-                    arr[R--] = arr[L];
+  beg[0]=0; end[0]=elements;
+    while (i>=0) {
+        L=beg[i]; R=end[i]-1;
+        if (L<R) {
+            piv=arr[L];
+            while (L<R) {
+                while (arr[R]>=piv && L<R)
+                    R--; 
+                if (L<R) 
+                    arr[L++]=arr[R];
+                while (arr[L]<=piv && L<R) 
+                    L++;    
+                if (L<R) 
+                    arr[R--]=arr[L];
             }
-            arr[L] = piv;
-            M = L + 1;
-            while (L > beg[i] && arr[L - 1] == piv)
-                L--;
-            while (M < end[i] && arr[M] == piv)
-                M++;
-            if (L - beg[i] > end[i] - M) {
-                beg[i + 1] = M;
-                end[i + 1] = end[i];
-                end[i++] = L;
-            } else {
-                beg[i + 1] = beg[i];
-                end[i + 1] = L;
-                beg[i++] = M;
-            }
-        } else {
-            i--;
+            arr[L]=piv;
+            beg[i+1]=L+1;
+            end[i+1]=end[i];
+            end[i++]=L;
+
+            if (end[i]-beg[i]>end[i-1]-beg[i-1]) {
+            swap=beg[i];
+            beg[i]=beg[i-1];
+            beg[i-1]=swap;
+            swap=end[i];
+            end[i]=end[i-1];
+            end[i-1]=swap;
+        }
+        }
+        else {
+        i--; 
         }
     }
-    return 0;
 }
 
 int main() {
