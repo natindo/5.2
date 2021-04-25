@@ -116,8 +116,8 @@ int main () {
                 break;
 
             default:
-                printf("error: unknown command %s\n", s);
-                return -2;
+                printf("Successful\n");
+                return 0;
             }
         }
     }
